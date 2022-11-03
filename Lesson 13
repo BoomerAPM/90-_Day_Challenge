@@ -1,0 +1,128 @@
+
+import SwiftUI
+
+
+struct ContentView: View {
+    
+    
+    @State private var credits = 1000
+    @State private var slotOne = "star"
+    @State private var slotTwo = "cherry"
+    @State private var slotThree = "apple"
+    
+    
+    var body: some View {
+        
+        
+        
+        VStack {
+            
+            
+            Text ("SwiftUI Slots!")
+                .font(.title)
+                .fontWeight(.semibold)
+            
+            Spacer()
+            
+            Text (String(credits))
+            
+            Spacer()
+            
+            HStack (spacing: 10) {
+                Image (slotOne)
+                    .resizable()
+                    .scaledToFit()
+                Image (slotTwo)
+                    .resizable()
+                    .scaledToFit()
+                Image (slotThree)
+                    .resizable()
+                    .scaledToFit()
+                
+            }
+            
+            Spacer()
+            
+            Button {
+                
+                
+                spinSlotOne()
+                spinSlotTwo()
+                spinSlotThree()
+                
+                if (slotOne == "apple" && slotTwo == "apple" && slotThree == "apple") || (slotOne == "cherry" && slotTwo == "cherry" && slotThree == "cherry") || (slotOne == "star" && slotTwo == "star" && slotThree == "star") {
+                    credits += 200 }
+                else {
+                    credits -= 5
+                }
+                    
+                
+            
+            } label: {
+                Text ("Spin")
+                    .foregroundColor(Color.white)
+                    .padding(.all)
+                    .frame(width: /*@START_MENU_TOKEN@*/150.0/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/50.0/*@END_MENU_TOKEN@*/)
+                    .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color.red/*@END_MENU_TOKEN@*/)
+                    .cornerRadius(25)
+                
+                
+                
+            }
+            
+            
+            Spacer()
+        }
+        
+        
+    }
+  
+        func spinSlotOne(){
+            
+            let one = Int.random(in: 1...3)
+            if one == 1 {
+                slotOne = "star"
+                
+            } else if one == 2 {
+                slotOne = "cherry"
+                
+            }else { slotOne = "apple" }
+            
+        }
+        func spinSlotTwo(){
+            
+            let two = Int.random(in: 1...3)
+            if two == 1 {
+                slotTwo = "star"
+                
+            } else if two == 2 {
+                slotTwo = "cherry"
+                
+            }else { slotTwo = "apple" }
+            
+        }
+        func spinSlotThree(){
+            
+            let three = Int.random(in: 1...3)
+            if three == 1 {
+                slotThree = "star"
+                
+            } else if three == 2 {
+                slotThree = "cherry"
+                
+            }else { slotThree = "apple" }
+            
+            
+        
+    }
+    
+    
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
+    }
+    
+}
+
